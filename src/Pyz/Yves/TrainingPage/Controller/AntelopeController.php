@@ -20,7 +20,10 @@ class AntelopeController extends AbstractController
             ->getAntelope($antelopeCriteriaTransfer);
 
         return $this->view(
-            ['antelope' => $antelopeResponseTransfer->getAntelope()],
+            [
+                'antelope' => $antelopeResponseTransfer->getAntelope(),
+                'color' => $this->getFactory()->getColor(),
+            ],
             [],
             '@TrainingPage/views/antelope/get.twig'
         );
