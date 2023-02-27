@@ -3,7 +3,7 @@
 namespace Pyz\Yves\HelloWorld\Controller;
 
 use Spryker\Yves\Kernel\Controller\AbstractController;
-use Spryker\Yves\Kernel\View\View;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -11,10 +11,10 @@ class IndexController extends AbstractController
 {
     /**
      * @param Request $request
-     * @return array
+     * @return JsonResponse
      */
-    public function indexAction(Request $request)
+    public function helloAction(Request $request): JsonResponse
     {
-        return [];
+        return $this->jsonResponse(["message" => "Hello World"]);
     }
 }

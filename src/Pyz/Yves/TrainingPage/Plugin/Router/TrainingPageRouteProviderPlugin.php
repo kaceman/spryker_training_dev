@@ -17,7 +17,7 @@ class TrainingPageRouteProviderPlugin extends AbstractRouteProviderPlugin
         return $routeCollection;
     }
 
-    private function addTrainingAntelopeGetRoute(RouteCollection $routeCollection)
+    private function addTrainingAntelopeGetRoute(RouteCollection $routeCollection): RouteCollection
     {
         $route = $this->buildRoute('training/antelope/{name}', 'TrainingPage', 'Antelope', 'getAction');
         $route = $route->setMethods(['GET']);
