@@ -8,6 +8,7 @@
 namespace Pyz\Yves\ShopApplication;
 
 use Pyz\Yves\ProductReviewWidget\Widget\ProductDetailPageReviewWidget;
+use Pyz\Yves\ProductSocialWidget\Widget\ProductSocialWidget;
 use Spryker\Yves\ErrorHandler\Plugin\Application\ErrorHandlerApplicationPlugin;
 use Spryker\Yves\EventDispatcher\Plugin\Application\EventDispatcherApplicationPlugin;
 use Spryker\Yves\Form\Plugin\Application\FormApplicationPlugin;
@@ -202,6 +203,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductConfigurationWishlistFormWidget::class,
             ProductConfigurationWishlistItemDisplayWidget::class,
             ProductConfigurationWishlistPageButtonWidget::class,
+            ProductSocialWidget::class,
         ];
     }
 

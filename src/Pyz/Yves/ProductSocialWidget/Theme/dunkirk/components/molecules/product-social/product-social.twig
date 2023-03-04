@@ -1,0 +1,33 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'product-social',
+    tag: 'div'
+} %}
+
+{% define data = {
+    showTwitter: 1,
+    showFacebook: 1,
+    productName: required,
+    productUrl: required,
+    shopHost: app.request.schemeAndHttpHost,
+} %}
+
+{% set productUrl = "#{data.shopHost}/#{data.productUrl}" %}
+{% set twitterUrl = "https://twitter.com/intent/tweet?text=#{data.productName | url_encode}&url=#{productUrl | url_encode}" %}
+
+{% block body %}
+    <div class="{{ config.name }}__container">
+        {% if data.showFacebook %}
+            <a target="_blank" href="#">
+                <i class="bi bi-facebook"></i>
+            </a>
+        {% endif %}
+
+        {% if data.showTwitter %}
+            <a target="_blank" href="{{ twitterUrl }}">
+                <i class="bi bi-twitter"></i>
+            </a>
+        {% endif %}
+    </div>
+{% endblock %}

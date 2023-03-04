@@ -1,0 +1,22 @@
+{% extends template('widget') %}
+
+{% define data = {
+    socialIcons: _widget.social_icons,
+    productName: _widget.product_name,
+    productUrl: _widget.product_url,
+} %}
+
+{% block body %}
+
+    {% include molecule('product-social', 'ProductSocialWidget') with {
+        data: {
+            showTwitter: 'twitter' in data.socialIcons,
+            showFacebook: 'facebook' in data.socialIcons,
+            productName: data.productName,
+            productUrl: data.productUrl
+        }
+    } %}
+
+    <hr>
+
+{% endblock %}
