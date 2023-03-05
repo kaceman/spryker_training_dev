@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Console;
 
+use Pyz\Zed\AntelopeDataImport\AntelopeDataImportConfig;
 use Pyz\Zed\DataImport\DataImportConfig;
 use Pyz\Zed\Development\Communication\Console\AcceptanceCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\ApiCodeTestConsole;
@@ -343,6 +344,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new MessageBrokerWorkerConsole(),
 
             new DateTimeProductConfiguratorBuildFrontendConsole(),
+
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . static::PYZ_COMMAND_SEPARATOR . AntelopeDataImportConfig::IMPORT_TYPE_ANTELOPE),
+
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
