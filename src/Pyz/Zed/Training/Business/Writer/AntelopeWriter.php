@@ -8,9 +8,9 @@ use Pyz\Zed\Training\Persistence\TrainingEntityManagerInterface;
 class AntelopeWriter
 {
     /**
-     * @var \Pyz\Zed\Training\Persistence\TrainingEntityManagerInterface
+     * @var TrainingEntityManagerInterface
      */
-    protected $trainingEntityManager;
+    protected TrainingEntityManagerInterface $trainingEntityManager;
 
     public function __construct(TrainingEntityManagerInterface $trainingEntityManager)
     {
