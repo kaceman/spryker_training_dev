@@ -5,6 +5,7 @@ namespace Pyz\Zed\Training\Persistence;
 use Exception;
 use Generated\Shared\Transfer\AntelopeTransfer;
 use Orm\Zed\Antelope\Persistence\PyzAntelope;
+use Orm\Zed\Antelope\Persistence\PyzAntelopeQuery;
 use Propel\Runtime\Exception\PropelException;
 use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
 
@@ -25,6 +26,16 @@ class TrainingEntityManager extends AbstractEntityManager implements TrainingEnt
                 throw new Exception($e->getPrevious()->errorInfo[2] ?? '', 23000);
             }
         }
+
+        return $antelopeTransfer->fromArray($antelopeEntity->toArray(), true);
+    }
+
+    public function updateAntelope(AntelopeTransfer $antelopeTransfer): AntelopeTransfer
+    {
+        $antelopeEntity = PyzAntelopeQuery::create()->findOneByIdAntelope($antelopeTransfer->getIdAntelope());
+        $antelopeEntity->setName($antelopeTransfer->getName());
+        $antelopeEntity->setColor($antelopeTransfer->getColor());
+        $antelopeEntity->save();
 
         return $antelopeTransfer->fromArray($antelopeEntity->toArray(), true);
     }
