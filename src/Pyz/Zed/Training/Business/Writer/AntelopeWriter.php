@@ -26,4 +26,9 @@ class AntelopeWriter
     {
         return $this->trainingEntityManager->updateAntelope($antelopeTransfer);
     }
+
+    public function delete(AntelopeTransfer $antelopeTransfer): void
+    {
+        $this->trainingEntityManager->deleteAntelope($antelopeTransfer);
+    }
 }

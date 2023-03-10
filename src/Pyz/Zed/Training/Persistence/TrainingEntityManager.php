@@ -39,4 +39,10 @@ class TrainingEntityManager extends AbstractEntityManager implements TrainingEnt
 
         return $antelopeTransfer->fromArray($antelopeEntity->toArray(), true);
     }
+
+    public function deleteAntelope(AntelopeTransfer $antelopeTransfer): void
+    {
+        $antelopeEntity = PyzAntelopeQuery::create()->findOneByIdAntelope($antelopeTransfer->getIdAntelope());
+        $antelopeEntity->delete();
+    }
 }

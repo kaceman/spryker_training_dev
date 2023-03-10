@@ -12,5 +12,7 @@ interface TrainingFacadeInterface
 
     public function updateAntelope(AntelopeTransfer $antelopeTransfer): AntelopeTransfer;
 
+    public function deleteAntelope(AntelopeTransfer $antelopeTransfer): void;
+
     public function getAntelope(AntelopeCriteriaTransfer $antelopeCriteria): AntelopeResponseTransfer;
 }

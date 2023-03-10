@@ -33,4 +33,11 @@ class TrainingFacade extends AbstractFacade implements TrainingFacadeInterface
             ->createAntelopeWriter()
             ->update($antelopeTransfer);
     }
+
+    public function deleteAntelope(AntelopeTransfer $antelopeTransfer): void
+    {
+        $this->getFactory()
+            ->createAntelopeWriter()
+            ->delete($antelopeTransfer);
+    }
 }

@@ -9,4 +9,6 @@ interface TrainingEntityManagerInterface
     public function createAntelope(AntelopeTransfer $antelopeTransfer): AntelopeTransfer;
 
     public function updateAntelope(AntelopeTransfer $antelopeTransfer): AntelopeTransfer;
+
+    public function deleteAntelope(AntelopeTransfer $antelopeTransfer): void;
 }
