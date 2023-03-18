@@ -12,6 +12,7 @@ use Spryker\Client\SearchExtension\Dependency\Plugin\SearchContextAwareQueryInte
 
 class AntelopeQueryPlugin implements QueryInterface, SearchContextAwareQueryInterface
 {
+    // this could be name or id
     private string $name;
     const SOURCE_IDENTIFIER = 'page';
     /**
@@ -29,10 +30,19 @@ class AntelopeQueryPlugin implements QueryInterface, SearchContextAwareQueryInte
         $boolQuery = (new BoolQuery())
             ->addMust(
                 new Exists('id_antelope')
-            )
-            ->addMust(
+            );
+        if (is_numeric($this->name)) {
+            $boolQuery = $boolQuery->addShould(
                 new MatchQuery('name', $this->name)
             );
+            $boolQuery = $boolQuery->addShould(
+                new MatchQuery('id_antelope', $this->name)
+            );
+        } else {
+            $boolQuery = $boolQuery->addMust(
+                new MatchQuery('name', $this->name)
+            );
+        }
         return (new Query())->setQuery($boolQuery);
     }
 
@@ -46,7 +56,7 @@ class AntelopeQueryPlugin implements QueryInterface, SearchContextAwareQueryInte
 
     public function setSearchContext(SearchContextTransfer $searchContextTransfer): void
     {
-        // TODO: Implement setSearchContext() method.
+        $this->searchContextTransfer = $searchContextTransfer;
     }
 
     private function hasSearchContext(): bool
